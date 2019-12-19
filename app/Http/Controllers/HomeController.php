@@ -116,7 +116,8 @@ class HomeController extends Controller
             $data2['Infografy'] = view('home2.info_gunung'); 
             $data2['situsTerkait'] = view('home2.situs_terkait'); 
             $data2['widgetCuaca'] = view('home2.widgetCuaca'); 
-              
+            $data2['modal_info'] = view('home2.modal_info');
+
             return view('welcome2',$data2);   
 
         }elseif ($theme->status == 3) {
@@ -271,7 +272,6 @@ class HomeController extends Controller
             $view2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
             $view2['Infografy'] = view('home2.info_gunung');
             $view2['subscribe'] = view('home2.subscribe');
-
             return view('welcome2',$view2);
         }elseif ($theme->status == 3) {
             $view3['details'] = view('home3.details',compact('news','latestNews'));
