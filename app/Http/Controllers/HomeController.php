@@ -61,7 +61,7 @@ class HomeController extends Controller
         // $news = News::latest()->where('status',1)->where('featured',1)->where('updated_at', '>=', Carbon::today())->get();
         $news = News::with('category')->latest()->where('status',1)->where('featured',1)->get();
 
-        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 24)->get();
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
          
 
         /* Start For Category with news post Code in bootom section */
@@ -147,7 +147,7 @@ class HomeController extends Controller
         $theme = Theme::find(1);
         $news = Category::with('posts')->latest()->where('id', $id)->where('status',1)->get();
 
-        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 24)->get();
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
         $getPeringatan = new Cuaca; 
         $getGempaM5 = $getPeringatan->getGempaM5(); 
@@ -201,6 +201,7 @@ class HomeController extends Controller
 
         $news = News::with('category')->where('id',$id)->get();
         $latestNews = News::with('category')->latest()->where('status',1)->take(10)->get();
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
         if($theme->status == 1) {
             $view['details'] = view('home.details',compact('news'));
@@ -215,6 +216,7 @@ class HomeController extends Controller
             $data2['follow-us'] = view('home2.social');
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
+            $data2['article'] = view('home2.article',compact('articles'));
             return view('welcome2', $data2);
         }elseif ($theme->status == 3) {
             $data3['addvert'] = view('home3.addvert');
@@ -246,7 +248,7 @@ class HomeController extends Controller
         $news = News::with('category')->where('id',$newsid)->get();
         $latestNews = News::with('category')->latest()->where('status',1)->take(10)->get();
 
-        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 24)->get();
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
         $getPeringatan = new Cuaca; 
         $getGempaM5 = $getPeringatan->getGempaM5(); 
@@ -496,7 +498,8 @@ class HomeController extends Controller
             $news = News::where('status',1)->where('title', 'LIKE', '%' . $searchterm . '%')
                     ->orWhere('source', 'LIKE', '%' . $searchterm . '%')
                     ->paginate(10);
-
+            
+            $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
             if($theme->status == 1) {
                 $data['search'] = view('home.search',compact('news'));
                 $data['addvert'] = view('home.addvert');
@@ -509,6 +512,7 @@ class HomeController extends Controller
                 $data2['addvert'] = view('home2.addvert');
                 $data2['follow-us'] = view('home2.social');
                 $data2['popular'] = view('home2.popular'); 
+                $data2['article'] = view('home2.article',compact('articles')); 
                 return view('welcome2', $data2);
             }
             elseif($theme->status == 3) {
