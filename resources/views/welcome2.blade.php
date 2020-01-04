@@ -106,7 +106,7 @@
 
 					@yield('cat_feature') 
  
-					@yield('add-leftSide')
+					{{-- @yield('add-leftSide') --}}
 
 					<div class="gap-30"></div> 
 
@@ -132,7 +132,7 @@
 
 						@yield('Infografy')
 
-						@yield('add-right')
+						{{-- @yield('add-right') --}}
 
 						
 					</div><!-- Sidebar right end -->
@@ -142,7 +142,7 @@
 		</div><!-- Container end -->
 	</section><!-- First block end -->
 
-	@yield('add-three') 
+	{{-- @yield('add-three')  --}}
 
 	@yield('video')
 
