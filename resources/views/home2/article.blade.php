@@ -7,7 +7,7 @@
               <div class="list-post-block">
                 <ul class="list-post">
                 @foreach($articles as $n)
-                  <li class="clearfix">
+                  <li class="clearfix" style="margin-bottom:20px; max-height:none; border-bottom:solid 1px #000; padding-bottom:15px;">
                     <div class="post-block-style post-float clearfix">
                       <div class="post-thumb">
                         <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">
@@ -18,7 +18,7 @@
 
                       <div class="post-content">
                         <h2 class="post-title title-small">
-                          <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 50)}}... </a>
+                          <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 100)}}... </a>
                         </h2>
                         <div class="post-meta">
                           <span class="post-date">{{$n->updated_at->toFormattedDateString()}}</span>

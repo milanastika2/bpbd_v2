@@ -16,8 +16,7 @@
               <h2 class="post-title title-medium">
                 <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 100)}}...</a>
               </h2>
-              <div class="post-meta">
-                <span class="post-author"><a >{{$n->user_name}}</a></span>
+              <div class="post-meta"> 
                 <span class="post-date">{{$n->updated_at->toFormattedDateString()}}</span>
               </div>
             </div><!-- Post content end -->

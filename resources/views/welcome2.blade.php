@@ -134,7 +134,7 @@
 
 						@yield('add-right')
 
-						@yield('subscriber')
+						
 					</div><!-- Sidebar right end -->
 				</div><!-- Sidebar Col end -->
 
@@ -148,7 +148,7 @@
 
 
 
-	<footer id="footer" class="footer" style="background: #f5f5f5;">
+	<footer id="footer" class="footer" style="background: #f5f5f5; margin-top:-100px;">
 		<div class="footer-main">
 			<div class="container">
 				<div class="row">
@@ -161,8 +161,9 @@
 						}
 					</style>
 
-					<div class="col-md-3 col-sm-12 footer-widget widget-categories"> 
-						<img src="{{ asset('assets/images/ketua.jpg') }}" class="img-responsie">
+					<div class="col-md-4 m-0 col-sm-12 footer-widget widget-categories"> 
+						<h3 class="block-title"><span>Profile</span></h3>
+						<img src="{{ asset('assets/images/ketua.jpg') }}" class="img-responsie" width="200" style="text-align:center; margin:0 auto;">
 						<p class="text-center" style="color: #000;">Drs. I MADE RENTIN, AP., M.Si.</p>
 						<p class="text-center" style="color: orange;">Kepala Pelaksana Badan Penanggulangan Bencana Daerah Provinsi Bali</p>
 						<p class="text-justify more">
@@ -171,11 +172,11 @@
 						
 					</div><!-- Col end -->
 
-		          	<div class="col-md-4  col-md-offset-1 col-sm-12 footer-widget twitter-widget"> 
+		          	<div class="col-md-4  m-0 col-sm-12 footer-widget twitter-widget"> 
 						@yield('popular')
 		          	</div><!-- Col end -->
 
-					<div class="col-md-3  col-md-offset-1 col-sm-12 footer-widget twitter-widget"> 
+					<div class="col-md-4  m-0  col-sm-12 footer-widget twitter-widget"> 
 			            @yield('article')
 		          	</div><!-- Col end -->
 
@@ -183,7 +184,7 @@
 			</div><!-- Container end -->
 		</div><!-- Footer main end --> 
 	</footer><!-- Footer end -->
-	<footer class="footer">
+	<footer class="footer" style="padding:30px 0;">
 		<div class="footer-main text-center" style="background: #1c1c1c;">
 			<div class="container">
 				<div class="row">
@@ -214,23 +215,11 @@
 	<div class="copyright">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-6">
+				<div class="col-md-12 col-sm-6" style="margin:0 auto; text-align:center;">
 					<div class="copyright-info">
-						<span>{{$Gsetting->footer}}</span>
+						<span>Copyright © 2020 Badan Penanggulangan Bencana Daerah (BPBD) Prov. BALI.</span>
 					</div>
-				</div>
-
-				<div class="col-xs-12 col-sm-6">
-					<div class="footer-menu">
-						<ul class="nav unstyled">
-			              <li><a href="{{url('/')}}">Home</a></li>
-		                  <li><a href="{{url('/about-us')}}">About</a></li>
-		                  <li><a href="{{url('/site-map')}}">Site Map</a></li>
-		                  <li><a href="{{url('/privacy')}}">Privacy</a></li>
-		                  <li><a href="{{url('/contact-us')}}">Contact</a></li>
-						</ul>
-					</div>
-				</div>
+				</div> 
 			</div><!-- Row end -->
 
 			<div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top affix">

@@ -7,7 +7,7 @@
               <div class="list-post-block">
                 <ul class="list-post">
                 @foreach($popular as $n)
-                  <li class="clearfix">
+                  <li class="clearfix" style="margin-bottom:20px; max-height:none; border-bottom:solid 1px #000; padding-bottom:15px;">
                     <div class="post-block-style post-float clearfix">
                       <div class="post-thumb">
                         <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">
@@ -25,7 +25,9 @@
                         </div>
                       </div><!-- Post content end -->
                     </div><!-- Post block style end -->
+                    
                   </li><!-- Li 1 end -->
+                  
                   @endforeach
                 </ul><!-- List post end -->
               </div><!-- List post block end --> 
