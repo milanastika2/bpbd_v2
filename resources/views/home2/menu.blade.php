@@ -47,8 +47,8 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Galeri <i class="fa fa-angle-down"></i></a>
                   <ul class="dropdown-menu"> 
-                    <li><a href="{{url('/v/32/foto')}}">Foto</a></li>
-                    <li><a href="{{url('/v/45/video')}}">Video</a></li>
+                    <li><a href="{{url('/gallery/foto')}}">Foto</a></li> 
+                    <li><a href="{{url('/gallery/videos')}}">Video</a></li>
                   </ul>
                 </li><!-- Galeri menu end -->
 

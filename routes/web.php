@@ -12,6 +12,8 @@
 */
 
 /* Start Frontend Controller */
+Route::get('/cron/cuacaextrem', 'CronController@CuacaExtrem');
+Route::get('/cron/cuacaterkini', 'CronController@CuacaTerkini');  
 Route::get('/', 'HomeController@index');
 Route::get('/v/{id}/{slug}', 'HomeController@category');
 Route::get('/cuaca-bali', 'HomeController@cuacaBali');
@@ -21,6 +23,8 @@ Route::get('/gempa-terkini', 'HomeController@gempaTerkini');
 Route::get('/article/{id}/{title}', 'HomeController@featuredArticle');
 Route::get('/videos/{id}/{title}', 'HomeController@videos');
 Route::get('/popup', 'HomeController@popup')->name('popup');
+Route::get('/gallery/videos', 'HomeController@videos');
+Route::get('/gallery/foto', 'HomeController@foto');
 
 Route::get('/v/{id}/{slug}/article/{newsid}/{nslug}', 'HomeController@article');
 Route::get('/about-us', 'HomeController@aboutUs');
@@ -163,7 +167,7 @@ Route::post('admin-password/email', 'Admin\ForgotPasswordController@sendResetLin
 Route::get('admin-password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
 Route::post('admin-password/reset', 'Admin\ResetPasswordController@reset');
 
-
+ 
 Route::resource('slider', 'SliderController', ['names' => 'slider']);
 Route::resource('popup-infos', 'PopupInfosController', ['names' => 'popup_infos']);
 Route::resource('gallery', 'GalleryImageController', ['names' => 'gallery']);

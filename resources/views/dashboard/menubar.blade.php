@@ -37,8 +37,9 @@
       <a href="{{route('gallery')}}"><i class="fa fa-camera"></i> <span>Image Gallery</span></a></li>
     <li class="{{url()->current() == route('videos')?'active':''}}">
       <a href="{{route('videos')}}"><i class="fa fa-film"></i> <span>Videos</span></a></li>
+    <!--
     <li class="{{url()->current() == route('subscribers')?'active':''}}">
-     <a href="{{route('subscribers')}}"><i class="fa fa-users"></i> <span>Subscribers</span></a></li>
+     <a href="{{route('subscribers')}}"><i class="fa fa-users"></i> <span>Subscribers</span></a></li>-->
   <?php } ?>   
 
 
@@ -68,8 +69,8 @@
     {{--<li class="{{url()->current() == route('advertise')?'active':''}}">
       <a href="{{route('advertise')}}"><i class="fa fa-link"></i> <span>Advertisements</span></a></li>--}}
     
-    <li class="{{url()->current() == route('subscribers')?'active':''}}">
-     <a href="{{route('subscribers')}}"><i class="fa fa-users"></i> <span>Subscribers</span></a></li>
+    {{--<li class="{{url()->current() == route('subscribers')?'active':''}}">
+     <a href="{{route('subscribers')}}"><i class="fa fa-users"></i> <span>Subscribers</span></a></li>--}}
      
     <li class="{{url()->current() == route('seo')?'active':''}}">
       <a href="{{route('seo')}}"><i class="fa fa-wrench"></i> <span>Seo Tools</span></a></li>

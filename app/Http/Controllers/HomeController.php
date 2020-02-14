@@ -9,6 +9,8 @@ use App\Cuaca;
 use App\Category;
 use App\News;
 use App\Video;
+use App\Gallery;
+
 use App\Gsetting;
 use App\Advertisement;
 use Carbon\Carbon;
@@ -28,11 +30,12 @@ class HomeController extends Controller
        /**
        *    Info peringatanCuacaExtream dan terkini
        **/ 
-        $getPeringatan = new Cuaca;
-        $peringatanCuacaExtream = $getPeringatan->getCuacaExtrem(); 
-        $peringatanCuacaTerkini = $getPeringatan->getCuacaTerkini(); 
-        $getGempaM5 = $getPeringatan->getGempaM5(); 
-        $getGempaDirasakan = $getPeringatan->getGempaDirasakan(); 
+      $getPeringatan = Cuaca::where('id', 1)->first();
+      $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+      $getGempaM5 = $getPeringatan->terkini; 
+      $getGempaDirasakan = $getPeringatan->dirasakan;
+      $peringatanCuacaTerkini = $getPeringatan->bandara;
+
         $title_info = "Cuaca Bali"; 
         
 
@@ -150,9 +153,12 @@ class HomeController extends Controller
 
         $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
-        $getPeringatan = new Cuaca; 
-        $getGempaM5 = $getPeringatan->getGempaM5(); 
-        $getGempaDirasakan = $getPeringatan->getGempaDirasakan(); 
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara;
+
         $title_info = "Cuaca Bali"; 
 
         if($theme->status == 1){
@@ -204,6 +210,12 @@ class HomeController extends Controller
         $latestNews = News::with('category')->latest()->where('status',1)->take(10)->get();
         $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara;
+
         if($theme->status == 1) {
             $view['details'] = view('home.details',compact('news'));
             $view['addvert'] = view('home.addvert');
@@ -218,6 +230,8 @@ class HomeController extends Controller
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
             $data2['article'] = view('home2.article',compact('articles'));
+            $data2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
+            $data2['Infografy'] = view('home2.info_gunung');
             return view('welcome2', $data2);
         }elseif ($theme->status == 3) {
             $data3['addvert'] = view('home3.addvert');
@@ -251,9 +265,12 @@ class HomeController extends Controller
 
         $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
 
-        $getPeringatan = new Cuaca; 
-        $getGempaM5 = $getPeringatan->getGempaM5(); 
-        $getGempaDirasakan = $getPeringatan->getGempaDirasakan(); 
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara;
+
         $title_info = "Cuaca Bali"; 
 
         if($theme->status == 1) {
@@ -291,6 +308,7 @@ class HomeController extends Controller
         }
     }
 
+    /*
     public function videos($id, $title)
     {
         $theme = Theme::first();
@@ -307,6 +325,101 @@ class HomeController extends Controller
             $view2['videodetails'] = view('home2.videodetails',compact('Video'));
             $view2['addvert'] = view('home2.addvert');
             $view2['follow-us'] = view('home2.social');
+            $view2['subscribe'] = view('home2.subscribe');
+            return view('welcome2',$view2);
+        }elseif ($theme->status == 3) {
+            $view3['videodetails'] = view('home3.videodetails',compact('Video'));
+            $view3['addvert'] = view('home3.addvert');
+            $view3['follow-us'] = view('home3.social');
+            $view3['subscribe'] = view('home3.subscribe');
+            return view('welcome3',$view3);   
+        }elseif ($theme->status == 4) {
+            $view4['videodetails'] = view('home4.videodetails',compact('Video'));
+            $view4['addvert'] = view('home4.addvert');
+            $view4['follow-us'] = view('home4.social');
+            $view4['subscribe'] = view('home4.subscribe');
+            return view('welcome4',$view4);   
+        }
+    }
+    */
+
+    public function videos()
+    {
+        $theme = Theme::first();
+        $Video = Video::orderBy('created_at', 'Desc')->paginate(10); 
+        //$news = Category::with('posts')->latest()->where('id', $id)->where('status',1)->get();
+
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
+
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara;
+        
+        if($theme->status == 1) {
+            $view['video'] = view('home.videodetails',compact('Video'));
+            $view['addvert'] = view('home.addvert');
+            $view['follow-us'] = view('home.social');
+            $view['popular'] = view('home.popular'); 
+            // $view['subscribe'] = view('home.subscribe');
+            return view('welcome',$view);
+        }elseif($theme->status == 2) { 
+            
+            $view2['video'] = view('home2.videodetails',compact('Video'));
+            $view2['addvert'] = view('home2.addvert');
+            $view2['follow-us'] = view('home2.social');
+            $view2['popular'] = view('home2.popular');
+            $view2['article'] = view('home2.article',compact('articles')); 
+            $view2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5'));  
+            $view2['Infografy'] = view('home2.info_gunung');
+            $view2['subscribe'] = view('home2.subscribe');
+            return view('welcome2',$view2);
+        }elseif ($theme->status == 3) {
+            $view3['videodetails'] = view('home3.videodetails',compact('Video'));
+            $view3['addvert'] = view('home3.addvert');
+            $view3['follow-us'] = view('home3.social');
+            $view3['subscribe'] = view('home3.subscribe');
+            return view('welcome3',$view3);   
+        }elseif ($theme->status == 4) {
+            $view4['videodetails'] = view('home4.videodetails',compact('Video'));
+            $view4['addvert'] = view('home4.addvert');
+            $view4['follow-us'] = view('home4.social');
+            $view4['subscribe'] = view('home4.subscribe');
+            return view('welcome4',$view4);   
+        }
+    }
+
+    public function foto()
+    {
+        $theme = Theme::first();
+        $Fotos = Gallery::orderBy('created_at', 'Desc')->paginate(10); 
+        //$news = Category::with('posts')->latest()->where('id', $id)->where('status',1)->get();
+
+        $articles = News::with('category')->latest()->where('status',1)->where('category_id', 27)->get();
+
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara;
+        
+        if($theme->status == 1) {
+            $view['video'] = view('home.videodetails',compact('Video'));
+            $view['addvert'] = view('home.addvert');
+            $view['follow-us'] = view('home.social');
+            $view['popular'] = view('home.popular'); 
+            // $view['subscribe'] = view('home.subscribe');
+            return view('welcome',$view);
+        }elseif($theme->status == 2) { 
+             
+            $view2['video'] = view('home2.foto',compact('Fotos'));
+            $view2['addvert'] = view('home2.addvert');
+            $view2['follow-us'] = view('home2.social');
+            $view2['popular'] = view('home2.popular');
+            $view2['article'] = view('home2.article',compact('articles')); 
+            $view2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5'));  
+            $view2['Infografy'] = view('home2.info_gunung');
             $view2['subscribe'] = view('home2.subscribe');
             return view('welcome2',$view2);
         }elseif ($theme->status == 3) {
@@ -533,10 +646,16 @@ class HomeController extends Controller
     }
 
     public function cuacaBali(){
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini_cron = $getPeringatan->cuaca;
+
+        $cuacaToday = new Cuaca;
+        $peringatanCuacaTerkini = $cuacaToday->getCuacaTerkini();
+
         $theme = Theme::find(1);
-        $getPeringatan = new Cuaca;
-        $peringatanCuacaExtream = $getPeringatan->getCuacaExtrem(); 
-        $peringatanCuacaTerkini = $getPeringatan->getCuacaTerkini(); 
         $title_info = "Cuaca Bali";  
 
         if($theme->status == 1){
@@ -549,9 +668,10 @@ class HomeController extends Controller
             return view('welcome', $data);
         }elseif ($theme->status == 2){
             //$data2['catNews'] = view('home2.category',compact('news'));
-            $data2['addvert'] = view('home2.addvert');
+            //$data2['addvert'] = view('home2.addvert');
             $data2['cuacaToday'] = view('home2.cuacaToday', compact('peringatanCuacaTerkini', 'title_info')); 
-
+            //$data2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
+            $data2['Infografy'] = view('home2.info_gunung');
             $data2['follow-us'] = view('home2.social');
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
@@ -577,9 +697,13 @@ class HomeController extends Controller
     }
 
     public function cuacaPelabuhan(){
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->pelabuhan;
+
         $theme = Theme::find(1);
-        $getPeringatan = new Cuaca; 
-        $peringatanCuacaTerkini = $getPeringatan->getCuacaPelabuhan(); 
         $title_info = "Cuaca Pelabuhan Bali";  
 
         if($theme->status == 1){
@@ -597,6 +721,8 @@ class HomeController extends Controller
             $data2['follow-us'] = view('home2.social');
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
+            $data2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
+            $data2['Infografy'] = view('home2.info_gunung');
             return view('welcome2', $data2);
         }elseif ($theme->status == 3) {
             $data3['addvert'] = view('home3.addvert');
@@ -619,9 +745,14 @@ class HomeController extends Controller
     }
 
     public function cuacaBandara(){
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+        $peringatanCuacaTerkini = $getPeringatan->bandara; 
+
         $theme = Theme::find(1);
-        $getPeringatan = new Cuaca; 
-        $peringatanCuacaTerkini = $getPeringatan->getCuacaBandara(); 
+         
         $title_info = "Cuaca Bandara Bali";   
 
         if($theme->status == 1){
@@ -639,6 +770,9 @@ class HomeController extends Controller
             $data2['follow-us'] = view('home2.social');
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
+            $data2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
+            $data2['Infografy'] = view('home2.info_gunung');
+
             return view('welcome2', $data2);
         }elseif ($theme->status == 3) {
             $data3['addvert'] = view('home3.addvert');
@@ -661,6 +795,11 @@ class HomeController extends Controller
     }
 
     public function gempaTerkini(){
+        $getPeringatan = Cuaca::where('id', 1)->first();
+        $peringatanCuacaExtream = $getPeringatan->ekstrim; 
+        $getGempaM5 = $getPeringatan->terkini; 
+        $getGempaDirasakan = $getPeringatan->dirasakan;
+
         $theme = Theme::find(1);
         $getPeringatan = new Cuaca; 
         $peringatanCuacaTerkini = $getPeringatan->getGempaTerkini(); 
@@ -681,6 +820,8 @@ class HomeController extends Controller
             $data2['follow-us'] = view('home2.social');
             $data2['popular'] = view('home2.popular'); 
             $data2['subscribe'] = view('home2.subscribe');
+            $data2['gempaDirasakan'] = view('home2.sidebar_gempaDirasakan', compact('getGempaDirasakan', 'getGempaM5')); 
+            $data2['Infografy'] = view('home2.info_gunung');
             return view('welcome2', $data2);
         }elseif ($theme->status == 3) {
             $data3['addvert'] = view('home3.addvert');

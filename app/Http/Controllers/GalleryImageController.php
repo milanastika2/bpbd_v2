@@ -59,6 +59,7 @@ class GalleryImageController extends Controller
             $data->status = $request->status;
 
             $image = $request->image;
+             
             $imageName = Str::slug($request->title, '-').'-'.date('dmYHis').rand(0, 99999).'.'.$image->guessExtension();
             $upload = $image->move(public_path('uploads/gallery'), $imageName);
             $data->image = $imageName;
@@ -162,5 +163,5 @@ class GalleryImageController extends Controller
     public function destroy($id)
     {
         //
-    }
+    }  
 }

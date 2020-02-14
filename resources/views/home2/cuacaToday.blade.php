@@ -11,7 +11,7 @@
 		              </h3>
 		            </a>
 		        </div>
-		        {!! $peringatanCuacaTerkini !!}
+		        <div class="block">{!! $peringatanCuacaTerkini !!}</div>
 		        <p><u><em>Sumber :  BMKG</em></u></p>
 		        <hr>
 	    	</div>

@@ -6,7 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cuaca extends Model
 {
-     protected $guarded = [''];
+    protected $table = 'z_cuaca';
+    
+    /*
+    protected $fillable = [ 
+        'nama_cuaca', 'detail'
+    ];
+    */
+    protected $guarded = [''];
 
     
     public function get_string_between($string, $start, $end){

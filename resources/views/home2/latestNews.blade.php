@@ -8,10 +8,11 @@
   @foreach($news as $n)
     <div class="item">
           <div class="post-block-style clearfix">
+<a class="post-cat" style="position:inherit;top:0;left:0;" href="{{url('/v/'.$n->category->id.'/'.$n->category->slug)}}">{{$n->category->name}}</a>
             <div class="post-thumb">
               <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}"><img class="img-responsive" src="{{asset('/images/'.$n->image)}}" alt="" /></a>
             </div>
-            <a class="post-cat" href="{{url('/v/'.$n->category->id.'/'.$n->category->slug)}}">{{$n->category->name}}</a>
+            
             <div class="post-content">
               <h2 class="post-title title-medium">
                 <a href="{{url('/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 100)}}...</a>

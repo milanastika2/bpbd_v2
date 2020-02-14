@@ -11,7 +11,7 @@
                     <span>Peringatan Dini Cuaca Extrem</span>
                   </h3>
                 </a>
-                <marquee behavior="scroll" direction="left" style=" margin-top: -10px;">
+                <marquee behavior="scroll" direction="left" style=" margin-top: -10px;" scrollamount="10">
                   <h4>{{ $peringatanCuacaExtream }}</h4>
                 </marquee>
             </div>

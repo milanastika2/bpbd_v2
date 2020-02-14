@@ -117,7 +117,8 @@ class NewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
+    {   
+        
         $id = $request->id;
         if($request->schedule == 'on') {
             $data['schedule'] = 1;
@@ -155,13 +156,15 @@ class NewsController extends Controller
         
         if($request->hasFile('image')){
             $image = $request->file('image');
+           
                   // Delete the old picture
             $update = News::find($id);
 
             $update_path = public_path('images'). '/' .$update->image;
+            
             if($update->image != null)
             {
-                unlink($update_path);
+                //unlink($update_path);
             }
 
             $image_name = str_random(20);

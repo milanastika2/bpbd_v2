@@ -169,7 +169,8 @@ alert()->success('Good Job', 'Successfully Updated !!');
      $credentials = [
             'status' => 1,
         ];
-
+    $user->status = 1;
+    $user->update();
      Sentinel::update($user, $credentials);
      alert()->success('Good Job', 'Successfully Activated !!');
         return back();

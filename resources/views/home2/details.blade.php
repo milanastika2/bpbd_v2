@@ -16,7 +16,7 @@
                 <span class="post-author">
                   By <a>{{$n->user_name}}</a>
                 </span>   
-                <span class="post-date"><i class="fa fa-clock-o"></i> {{$n->updated_at->toFormattedDateString()}}</span>
+                <span class="post-date"><i class="fa fa-clock-o"></i> {{$n->created_at->toFormattedDateString()}}</span>
                 <span class="post-hits"><i class="fa fa-eye"></i> {{$n->hit_count}}</span>
               </div>
             </div><!-- Post title end -->

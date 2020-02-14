@@ -3,20 +3,20 @@
 @section('cat_feature')
 
 <div class="block category-listing category-style2" style="margin-top: 25px;">
-<h3 class="block-title"><span>Video Kegiatan</span></h3>
+<h3 class="block-title"><span>Foto Kegiatan</span></h3>
   <div class="row">
-          @foreach($Video as $n)
-          <div class="col-md-12">
+          @foreach($Fotos as $n)
+          <div class="col-md-4">
             <h2 class="post-title">
                 {{$n->title}}
             </h2>
-            {!! $n->url !!}  
+            <img src="{!! asset('uploads/gallery/'.$n->image) !!} " alt="bpbd bali" class="img img-responsive"> 
           </div><!-- Single post end -->
 
           @endforeach
     </div>
 
-    <div class="text-center">{!! $Video->links('layouts.pagination') !!}</div> 
+    <div class="text-center">{!! $Fotos->links('layouts.pagination') !!}</div> 
 </div>
 @stop
 

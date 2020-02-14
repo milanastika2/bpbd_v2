@@ -217,7 +217,7 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-6" style="margin:0 auto; text-align:center;">
 					<div class="copyright-info">
-						<span>Copyright © 2020 Badan Penanggulangan Bencana Daerah (BPBD) Prov. BALI.</span>
+						<span>Copyright © 2019 Badan Penanggulangan Bencana Daerah (BPBD) Prov. BALI.</span>
 					</div>
 				</div> 
 			</div><!-- Row end -->

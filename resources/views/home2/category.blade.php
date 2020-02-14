@@ -23,11 +23,11 @@
 				<div class="col-md-7 col-sm-6">
 					<div class="post-content">
 			 			<h2 class="post-title title-large">
-			 				<a href="{{url('/v/'.$cat->id .'/'.$cat->slug.'/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 100)}}</a>
+			 				<a href="{{url('/v/'.$cat->id .'/'.$cat->slug.'/article/'.$n->id.'/'.$n->slug)}}">{{substr($n->title, 0, 200)}}</a>
 			 			</h2>
 			 			<div class="post-meta">
 			 				<span class="post-author"><a>{{$n->user_name}}</a></span>
-				 			<span class="post-date">{{$n->updated_at->toFormattedDateString()}}</span>
+				 			<span class="post-date">{{$n->created_at->toFormattedDateString()}}</span>
 			 			</div>
 			 			<p>{!! str_limit(strip_tags($n->details),200) !!}</p>
 		 			</div><!-- Post content end -->
