@@ -13,7 +13,7 @@
 	      </div>
 	      <div class="modal-body">
                 <a href="" id="popup-url">    
-                    <img src="{{asset('/images/siaga_gunung_agung.jpeg')}}" alt="bali" id="popup-image">
+                    <img src="https://i.pinimg.com/originals/a2/dc/96/a2dc9668f2cf170fe3efeb263128b0e7.gif" alt="bali" id="popup-image">
                 </a>
 	      </div>
 	      <div class="modal-footer">
