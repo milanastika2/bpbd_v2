@@ -87,4 +87,13 @@ class PesertaController extends Controller
     {
         return 'delete';
     }
+
+    public function print(Request $request){
+        $event = Event::findOrFail($request->id);
+        $datas = Peserta::join('event', 'event.id', '=', 'peserta_event.id_event')
+            ->where('event.id', $event->id)
+            ->get(); 
+        
+        return view('dashboard.event.peserta_print',compact('datas', 'event'));
+    }
 }

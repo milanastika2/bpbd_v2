@@ -174,3 +174,4 @@ Route::resource('gallery', 'GalleryImageController', ['names' => 'gallery']);
 
 Route::resource('event', 'EventController', ['names' => 'event']);
 Route::resource('peserta', 'PesertaController', ['names' => 'peserta']);
+Route::get('print/peserta', 'PesertaController@print')->name('print.peserta');

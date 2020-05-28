@@ -7,6 +7,8 @@
 @section('content-title')
     Peserta | {{$event->judul_event}}
     
+    <a href="{{route('print.peserta', ['id'=> $event->id])}}" type="button" class="pull-right btn  btn-info btn-flat"><i class="fa fa-print"></i> <b>Print</b> </a>
+
 	<a href="{{route('peserta.create', ['id'=> $event->id])}}" type="button" class="pull-right btn  btn-info btn-flat"><i class="fa fa-plus"></i> <b>Add Peserta</b> </a>
 
     <a href="{{route('event.index')}}" type="button" class="pull-right btn  btn-primary btn-flat"><i class="glyphicon glyphicon-arrow-left"></i> <b>Back</b> </a>
