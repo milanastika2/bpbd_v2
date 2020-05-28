@@ -28,7 +28,7 @@
 
 
   <?php 
-         if(Sentinel::check() && Sentinel::getUser()->roles()->first()->slug=='manager'){
+    if(Sentinel::check() && Sentinel::getUser()->roles()->first()->slug=='manager'){
       ?>
     <li class="{{url()->current() == route('news')?'active':''}}">
       <a href="{{route('news')}}"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
@@ -37,6 +37,9 @@
       <a href="{{route('gallery')}}"><i class="fa fa-camera"></i> <span>Image Gallery</span></a></li>
     <li class="{{url()->current() == route('videos')?'active':''}}">
       <a href="{{route('videos')}}"><i class="fa fa-film"></i> <span>Videos</span></a></li>
+    
+    <li class="{{url()->current() == route('event.index')?'active':''}}">
+      <a href="{{route('event.index')}}"><i class="fa fa-file"></i> <span>Master Event</span></a></li>
     <!--
     <li class="{{url()->current() == route('subscribers')?'active':''}}">
      <a href="{{route('subscribers')}}"><i class="fa fa-users"></i> <span>Subscribers</span></a></li>-->
@@ -95,6 +98,9 @@
 
     <li class="{{url()->current() == route('videos')?'active':''}}">
       <a href="{{route('videos')}}"><i class="fa fa-film"></i> <span>Videos Gallery</span></a></li>
+    
+    <li class="{{url()->current() == route('event.index')?'active':''}}">
+      <a href="{{route('event.index')}}"><i class="fa fa-file"></i> <span>Master Event</span></a></li>
 
     <?php }?>   
       </ul>

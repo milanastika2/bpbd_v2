@@ -171,3 +171,6 @@ Route::post('admin-password/reset', 'Admin\ResetPasswordController@reset');
 Route::resource('slider', 'SliderController', ['names' => 'slider']);
 Route::resource('popup-infos', 'PopupInfosController', ['names' => 'popup_infos']);
 Route::resource('gallery', 'GalleryImageController', ['names' => 'gallery']);
+
+Route::resource('event', 'EventController', ['names' => 'event']);
+Route::resource('peserta', 'PesertaController', ['names' => 'peserta']);
