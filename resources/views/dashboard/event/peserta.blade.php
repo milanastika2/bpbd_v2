@@ -41,11 +41,10 @@
                             <td>{{$data->judul_event}}</td> 
                             <td>{{$data->nama_peserta}}</td> 
                             <td>{{$data->email_peserta}}</td> 
+                            <td>{{$data->no_hp_peserta}}</td> 
                             <td>
-                            	<a class="btn btn-primary btn-xs" href="{{route('event.edit',['id'=> $data->id])}}">
-                                    <span class="glyphicon glyphicon-edit"></span>  Edit
-                                </a>
-                                <a class="btn btn-danger btn-xs" href="{{route('event.destroy', ['id'=> $data->id])}}" onclick="return checkDelete()">
+                            	
+                                <a class="btn btn-danger btn-xs" href="{{route('peserta.destroy', ['id_peserta'=> $data->id_peserta])}}" onclick="return checkDelete()">
                                     <span class="glyphicon glyphicon-trash"></span>  Delete
                                 </a>
                             </td>

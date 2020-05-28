@@ -132,8 +132,10 @@ class EventController extends Controller
 
         if ($del_image) {
             $data->delete();
+            alert()->success('Good Job', 'Successfully Delete !!');
             return redirect()->route('event.index')->with('message', 'Berhasil hapus data');
         }else{
+            alert()->error('Gagal', 'Gagal Hapus Gambar !!');
             return redirect()->route('event.index')->with('message', 'Delete image error : '.$del_image);
         }
         

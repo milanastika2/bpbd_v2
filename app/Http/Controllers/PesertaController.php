@@ -72,4 +72,19 @@ class PesertaController extends Controller
             
         }
     }
+    public function show($id)
+    {
+        //Delete
+        $data = Peserta::findOrFail($id);
+        
+        $data->delete();
+        alert()->success('Good Job', 'Successfully Delete !!');
+        return redirect()->back()->with('message', 'Berhasil hapus data');
+        
+    }
+
+    public function destroy($id)
+    {
+        return 'delete';
+    }
 }
