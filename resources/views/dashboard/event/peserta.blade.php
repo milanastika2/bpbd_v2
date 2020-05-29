@@ -7,7 +7,7 @@
 @section('content-title')
     Peserta | {{$event->judul_event}}
     
-    <a href="{{route('print.peserta', ['id'=> $event->id])}}" type="button" class="pull-right btn  btn-info btn-flat"><i class="fa fa-print"></i> <b>Print</b> </a>
+    <a target="_new" href="{{route('print.peserta', ['id'=> $event->id])}}" type="button" class="pull-right btn  btn-info btn-flat"><i class="fa fa-print"></i> <b>Print</b> </a>
 
 	<a href="{{route('peserta.create', ['id'=> $event->id])}}" type="button" class="pull-right btn  btn-info btn-flat"><i class="fa fa-plus"></i> <b>Add Peserta</b> </a>
 
@@ -33,6 +33,7 @@
                             <th data-field="nama" data-sortable="true">Nama</th>
                             <th data-field="email" data-sortable="true">Email</th>
                             <th data-field="no_tlp" data-sortable="true">No Tlp</th>
+                            <th data-field="status" data-sortable="true">Status</th>
                             <th data-field="Actions" width="30%">Actions</th>
                         </tr>
                     </thead>
@@ -44,6 +45,7 @@
                             <td>{{$data->nama_peserta}}</td> 
                             <td>{{$data->email_peserta}}</td> 
                             <td>{{$data->no_hp_peserta}}</td> 
+                            <td>{{($data->status == 1)? 'Hadir': 'Tidak'}}</td> 
                             <td>
                             	
                                 <a class="btn btn-danger btn-xs" href="{{route('peserta.destroy', ['id_peserta'=> $data->id_peserta])}}" onclick="return checkDelete()">

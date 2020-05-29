@@ -62,6 +62,7 @@ class PesertaController extends Controller
                 $data->nama_peserta = $request->nama_peserta;
                 $data->email_peserta = $request->email_peserta;
                 $data->no_hp_peserta = $request->no_hp_peserta;
+                $data->status = 1;
                 $data->save();
                 alert()->success('Good Job', 'Successfully added a post !!');
                 return redirect()->back()->with('message', 'Berhasil tambah data');
@@ -92,6 +93,8 @@ class PesertaController extends Controller
         $event = Event::findOrFail($request->id);
         $datas = Peserta::join('event', 'event.id', '=', 'peserta_event.id_event')
             ->where('event.id', $event->id)
+            ->where('peserta_event.status', '1')
+            ->orderBy('peserta_event.id_event', 'Desc')
             ->get(); 
         
         return view('dashboard.event.peserta_print',compact('datas', 'event'));

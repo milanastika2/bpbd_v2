@@ -109,14 +109,14 @@ class EEventController extends Controller
         
         $get_peserta = Peserta::where('email_peserta', $request->email_peserta)
         ->orWhere('no_hp_peserta', $request->no_hp_peserta)
-        ->get();
-
-        if($get_peserta){
+        ->count();
+        
+        if($get_peserta > 0){
             alert()->error('Gagal mendaftar peserta', 'Nama atau Email sudah terdaftar !!');
             return redirect()->back()->with('message', 'Nama atau Email sudah terdaftar !!');
         }else{
             //total peserta terakhir
-            $total = Peserta::where('id_event', $event->id)->count();
+            $total = Peserta::where('id_event', $event->id)->where('status', '1')->count();
             $total = $total + 1;
 
             if($total <= $quota){
@@ -125,6 +125,7 @@ class EEventController extends Controller
                 $data->nama_peserta = $request->nama_peserta;
                 $data->email_peserta = $request->email_peserta;
                 $data->no_hp_peserta = $request->no_hp_peserta;
+                $data->status = 1;
                 $data->save();
                 alert()->success('Good Job', 'Berhasil mendaftar !!');
                 return redirect()->back()->with('message', 'Berhasil tambah data');
