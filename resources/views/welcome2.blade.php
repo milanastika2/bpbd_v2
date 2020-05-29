@@ -105,6 +105,10 @@
 					@yield('widgetCuaca')
 
 					@yield('cat_feature') 
+
+					@yield('event') 
+
+					@yield('event_detail') 
  
 					{{-- @yield('add-leftSide') --}}
 
@@ -258,6 +262,8 @@
 
 	<!-- Template custom -->
 	<script type="text/javascript" src="{{asset('/assets/')}}/js/custom.js"></script>
+	<script src="{{asset('/js/sweetalert.js')}}"></script>
+	
 	<script type="text/javascript">
     var path = "{{ route('autocomplete.ajax') }}";
     $('input.typeahead').typeahead({
@@ -296,7 +302,7 @@
 	</script>
 
   @include('Alerts::alerts')
-  @yield('script')
+  @yield('script') 
 	
 	<script>
 		$(document).ready(function() {

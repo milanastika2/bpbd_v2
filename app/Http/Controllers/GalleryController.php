@@ -121,10 +121,10 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $id = ImageGallery::with('CountImage')->findOrfail($id);
-        dd($id);
-        // $id->delete();
+        
+        $id->delete();
 
 
-        // return back()->with('message', 'Succesfully Deleted');
+        return back()->with('message', 'Succesfully Deleted');
     }
 }

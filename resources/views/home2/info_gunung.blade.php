@@ -11,6 +11,11 @@
       <img src="{{asset('assets/images/siki.png')}}" alt="bali">
     </a>
   </div><!-- List post block end --> 
+  <div class="list-post-block">
+    <a href="{{ route('e-event') }}" target="_new">
+      <img src="{{asset('assets/images/event.jpg')}}" alt="bali">
+    </a>
+  </div><!-- List post block end --> 
 </div><!-- Popular news widget end -->
 
 <div class="widget color-default"> 

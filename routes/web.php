@@ -37,6 +37,11 @@ Route::get('/click-add/{id}', 'HomeController@clickadd');
 Route::get('/autocomplete-ajax', ['uses'=>'HomeController@ajaxData', 'as'=>'autocomplete.ajax']);
 Route::get('/search', ['uses'=>'HomeController@search', 'as'=>'search.data']);
 
+
+Route::get('e-event', 'EEventController@ListEvent')->name('e-event');
+Route::get('e-event/{id}/detail', 'EEventController@DetailEvent');
+Route::post('e-event/{id}/register', 'EEventController@RegisterEvent');
+
 /* End Frontend Controller */
 
 Route::get('/manager', 'ManagerController@index');
@@ -175,3 +180,4 @@ Route::resource('gallery', 'GalleryImageController', ['names' => 'gallery']);
 Route::resource('event', 'EventController', ['names' => 'event']);
 Route::resource('peserta', 'PesertaController', ['names' => 'peserta']);
 Route::get('print/peserta', 'PesertaController@print')->name('print.peserta');
+
