@@ -43,14 +43,16 @@
                 @endif 
               @endforeach
 
-               
+               <!--
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Galeri <i class="fa fa-angle-down"></i></a>
                   <ul class="dropdown-menu"> 
                     <li><a href="{{url('/gallery/foto')}}">Foto</a></li> 
                     <li><a href="{{url('/gallery/videos')}}">Video</a></li>
                   </ul>
-                </li><!-- Galeri menu end -->
+                </li>
+                -->
+                <!-- Galeri menu end -->
 
 
               </ul><!--/ Nav ul end -->
