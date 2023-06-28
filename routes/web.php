@@ -146,15 +146,15 @@ Route::put('/social-settings/{product_id?}', 'SocialController@updateItem');
 Route::delete('/social-settings/{product_id?}','SocialController@deleteItem');
 
 /* Login & Registration   */
-Route::get('/register','UserRegisterController@index');
-Route::post('/register',['uses'=>'UserRegisterController@store', 'as'=>'register']);
+//Route::get('/register','UserRegisterController@index');
+//Route::post('/register',['uses'=>'UserRegisterController@store', 'as'=>'register']);
 
 Route::get('/login',['uses' =>'UserLoginController@index','as'=> 'login']);
 Route::post('/login',['uses' =>'UserLoginController@login','as'=> 'login']);
 Route::get('/logout',['uses' =>'UserLoginController@logout','as'=> 'logout']);
 
-Route::get('resetpassword', array('as' => 'reset.password', 'uses' => 'PasswordController@edit'));
-Route::post('resetpasswordcomplete', array('as' => 'reset.password.complete', 'uses' => 'PasswordController@update'));
+//Route::get('resetpassword', array('as' => 'reset.password', 'uses' => 'PasswordController@edit'));
+//Route::post('resetpasswordcomplete', array('as' => 'reset.password.complete', 'uses' => 'PasswordController@update'));
 
 Route::get('/editProfile',['uses'=>'ProfileController@editProfile','as'=>'editProfile']);
 Route::post('/editProfile',['uses'=>'ProfileController@updatePass','as'=>'updatePass']);
@@ -162,8 +162,8 @@ Route::post('/updateProfile',['uses'=>'ProfileController@updateProfile','as'=>'u
 Route::post('/update-Profile',['uses'=>'ProfileController@Profile','as'=>'profile']);
 
 
-Route::get('/forgot-password','ForgetPasswordController@resetFrom');
-Route::post('/forget-password','ForgetPasswordController@PostForgetPassword');
+//Route::get('/forgot-password','ForgetPasswordController@resetFrom');
+//Route::post('/forget-password','ForgetPasswordController@PostForgetPassword');
 
 /*============== Admin Password Reset Route list ===========================*/
 
