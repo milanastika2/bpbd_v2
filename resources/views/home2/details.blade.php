@@ -2,7 +2,7 @@
 
 @section('cat_feature')
 
-{!! $seoComment->fbcomment !!}
+{{-- $seoComment->fbcomment --}}
 
           @foreach($news as $n)
           <div class="single-post">
@@ -40,12 +40,14 @@
                   @endforeach
                 </div>
               </div><!-- Tags end -->
-              
+
+       {{--               
     <div class="comments-form">
     <?php  $site = $seoComment->siteurl ?>
             <h3 class="title-normal">Leave a comment</h3>
       <div class="fb-comments" data-href="{{url(''.$site.$n->id)}}" data-numposts="5"></div>
     </div><!-- Comments form end -->
+                      --}}
 
 
           <div class="related-posts ">
